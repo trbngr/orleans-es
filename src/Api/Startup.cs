@@ -25,9 +25,9 @@ namespace Api
             services.AddMvc();
             var azureTableCS = "DefaultEndpointsProtocol=https;AccountName=cs44de867d736aax49dfxbd9;AccountKey=I9QAt4VtgU6UTeJNAtxVCjFijmmMiJNjC032iMUJe2CvVkPxaLWnJYb0AfJuR5AtMpUO6LQ3z43EXOcy4Db+hg==";
             var clientConfig = ClientConfiguration.LocalhostSilo();
-            clientConfig.DataConnectionString = azureTableCS;
-            clientConfig.DeploymentId = "OrleansTest";
-            clientConfig.GatewayProvider = ClientConfiguration.GatewayProviderType.AzureTable;
+//            clientConfig.DataConnectionString = azureTableCS;
+//            clientConfig.DeploymentId = "OrleansTest";
+//            clientConfig.GatewayProvider = ClientConfiguration.GatewayProviderType.AzureTable;
 
 
             var builder = new ClientBuilder().UseConfiguration(clientConfig);

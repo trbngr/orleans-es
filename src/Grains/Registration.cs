@@ -7,19 +7,12 @@ using static LanguageExt.Prelude;
 
 namespace Grains
 {
-    public class RegistrationState
-    {
-        public bool Created { get; set; }
-
-        public void Apply(RegistrationCreated _) => Created = true;
-    }
-
     public class Registration : JournaledGrain<RegistrationState, IRegistrationEvent>, IRegistration
     {
-        public Task<Either<Error, RegistrationCreated>> Create(CreateRegistration command)
+        public async Task<Either<Error, RegistrationCreated>> Create(CreateRegistration command)
         {
             if (State.Created)
-                return Left<Error, RegistrationCreated>(Error.New("Registration already exists")).AsTask();
+                return Left<Error, RegistrationCreated>(Error.New("Registration already exists"));
 
             var e = new RegistrationCreated
             {
@@ -28,8 +21,21 @@ namespace Grains
             };
 
             RaiseEvent(e);
+            await SendWelcomeEmail(command);
 
-            return Right<Error, RegistrationCreated>(e).AsTask();
+            return Right<Error, RegistrationCreated>(e);
+        }
+
+        private async Task SendWelcomeEmail(CreateRegistration command)
+        {
+            var provider = GetStreamProvider("SMSProvider");
+            var stream = provider.GetStream<INotification>(Guid.Empty, Streams.Notifications);
+
+            await stream.OnNextAsync(new Notification
+            {
+                Subject = $"Welcome, {command.FirstName}",
+                Body = "Some email body"
+            });
         }
 
         protected override void OnStateChanged()

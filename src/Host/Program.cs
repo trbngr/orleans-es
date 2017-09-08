@@ -13,13 +13,13 @@ namespace Host
             var clusterConfig = ClusterConfiguration.LocalhostPrimarySilo();
             clusterConfig.AddMemoryStorageProvider("Default");
             clusterConfig.AddMemoryStorageProvider("PubSubStore");
-            clusterConfig.AddSimpleMessageStreamProvider("Default");
+            clusterConfig.AddSimpleMessageStreamProvider("SMSProvider");
 
-            clusterConfig.Globals.LivenessType = GlobalConfiguration.LivenessProviderType.AzureTable;
-            clusterConfig.Globals.DataConnectionString = azureTableCS;
-            clusterConfig.Globals.DataConnectionStringForReminders = azureTableCS;
-            clusterConfig.Globals.DeploymentId = "OrleansTest";
-            clusterConfig.Globals.ReminderServiceType = GlobalConfiguration.ReminderServiceProviderType.AzureTable;
+//            clusterConfig.Globals.LivenessType = GlobalConfiguration.LivenessProviderType.AzureTable;
+//            clusterConfig.Globals.DataConnectionString = azureTableCS;
+//            clusterConfig.Globals.DataConnectionStringForReminders = azureTableCS;
+//            clusterConfig.Globals.DeploymentId = "OrleansTest";
+//            clusterConfig.Globals.ReminderServiceType = GlobalConfiguration.ReminderServiceProviderType.AzureTable;
 
             var silo = new SiloHost("Test Silo", clusterConfig);
             silo.InitializeOrleansSilo();
