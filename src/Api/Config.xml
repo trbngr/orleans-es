@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClientConfiguration xmlns="urn:orleans">
+
+    <SystemStore SystemStoreType="AzureTable"
+                 DeploymentId="OrleansTest"
+                 DataConnectionString="DefaultEndpointsProtocol=https;AccountName=cs44de867d736aax49dfxbd9;AccountKey=I9QAt4VtgU6UTeJNAtxVCjFijmmMiJNjC032iMUJe2CvVkPxaLWnJYb0AfJuR5AtMpUO6LQ3z43EXOcy4Db+hg==" />
+
+</ClientConfiguration>

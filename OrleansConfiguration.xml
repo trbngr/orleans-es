@@ -1,0 +1,134 @@
+<urn:OrleansConfiguration xmlns:urn="urn:orleans">
+  <urn:Globals>
+    <!--Optional:-->
+    <urn:StorageProviders>
+      <!--Zero or more repetitions:-->
+      <urn:Provider Type="string" Name="string"/>
+    </urn:StorageProviders>
+    <!--Optional:-->
+    <urn:LogConsistencyProviders>
+      <!--Zero or more repetitions:-->
+      <urn:Provider Type="string" Name="string"/>
+    </urn:LogConsistencyProviders>
+    <!--Optional:-->
+    <urn:StreamProviders>
+      <!--Zero or more repetitions:-->
+      <urn:Provider Type="string" Name="string"/>
+    </urn:StreamProviders>
+    <!--Optional:-->
+    <urn:Application>
+      <!--Optional:-->
+      <urn:Defaults>
+        <urn:Deactivation AgeLimit="string"/>
+      </urn:Defaults>
+      <!--1 or more repetitions:-->
+      <urn:GrainType Type="string">
+        <urn:Deactivation AgeLimit="string"/>
+      </urn:GrainType>
+    </urn:Application>
+    <!--Optional:-->
+    <urn:PlacementStrategy DefaultPlacementStrategy="string" DeploymentLoadPublisherRefreshTime="string" ActivationCountBasedPlacementChooseOutOf="3"/>
+    <!--Zero or more repetitions:-->
+    <urn:SeedNode Address="string" Port="7" Subnet="5" PreferredFamily="InterNetworkV6"/>
+    <!--Optional:-->
+    <urn:SystemStore SystemStoreType="ZooKeeper" ServiceId="string" DeploymentId="string" MembershipTableAssembly="string" ReminderTableAssembly="string" DataConnectionString="string" DataConnectionStringForReminders="string" AdoInvariant="string" AdoInvariantForReminders="string"/>
+    <!--Optional:-->
+    <urn:Networking Subnet="string"/>
+    <!--Optional:-->
+    <urn:Messaging ResponseTimeout="string" ResendOnTimeout="true" MaxResendCount="3" SiloSenderQueues="3" GatewaySenderQueues="3" ClientSenderBuckets="3" MaxForwardCount="3">
+      <!--Optional:-->
+      <urn:SerializationProviders>
+        <!--1 or more repetitions:-->
+        <urn:Provider type="string"/>
+      </urn:SerializationProviders>
+      <!--Optional:-->
+      <urn:FallbackSerializationProvider type="string"/>
+    </urn:Messaging>
+    <!--Optional:-->
+    <urn:Caching CacheSize="201" InitialTTL="string" MaximumTTL="string" TTLExtensionFactor="1.051732E7" DirectoryCachingStrategy="None"/>
+    <!--Optional:-->
+    <urn:Liveness LivenessType="AzureTable" LivenessEnabled="true" ProbeTimeout="string" TableRefreshTimeout="string" DeathVoteExpirationTimeout="string" NumMissedProbesLimit="3" NumProbedSilos="3" NumVotesForDeathDeclaration="3" UseLivenessGossip="true" ValidateInitialConnectivity="false" IAmAliveTablePublishTimeout="string" NumMissedTableIAmAliveLimit="3" MaxJoinAttemptTime="string" ExpectedClusterSize="3"/>
+    <!--Optional:-->
+    <urn:ReminderService ReminderServiceType="AzureTable"/>
+    <!--Optional:-->
+    <urn:MultiClusterNetwork ClusterId="string" MaxMultiClusterGateways="201" BackgroundGossipInterval="string" UseGlobalSingleInstanceByDefault="false" GlobalSingleInstanceRetryInterval="string" DefaultMultiCluster="string">
+      <!--Zero or more repetitions:-->
+      <urn:GossipChannel Type="string" ConnectionString="string"/>
+    </urn:MultiClusterNetwork>
+    <!--Optional:-->
+    <urn:Directory>anyType</urn:Directory>
+  </urn:Globals>
+  <urn:Defaults>
+    <!--Optional:-->
+    <urn:Startup Type="string"/>
+    <!--Optional:-->
+    <urn:Networking Address="string" Port="7" Subnet="5" PreferredFamily="InterNetwork"/>
+    <!--Optional:-->
+    <urn:ProxyingGateway Address="string" Port="7" Subnet="5" PreferredFamily="InterNetwork"/>
+    <!--Optional:-->
+    <urn:Scheduler MaxActiveThreads="5" DelayWarningThreshold="string" ActivationSchedulingQuantum="string" TurnWarningLengthThreshold="string"/>
+    <!--Optional:-->
+    <urn:LoadShedding Enabled="false" LoadLimit="201"/>
+    <!--Optional:-->
+    <urn:Tracing DefaultTraceLevel="Verbose2" TraceToConsole="false" TraceToFile="string" MetricWritePeriod="string" LargeMessageWarningThreshold="3" PropagateActivityId="false" BulkMessageLimit="3">
+      <!--Zero or more repetitions:-->
+      <urn:LogConsumer>anyType</urn:LogConsumer>
+      <!--Zero or more repetitions:-->
+      <urn:TraceLevelOverride LogPrefix="string" TraceLevel="Off"/>
+    </urn:Tracing>
+    <!--Optional:-->
+    <urn:Statistics MetricsTableWriteInterval="string" PerfCounterWriteInterval="string" LogWriteInterval="string" WriteLogStatisticsToTable="false" StatisticsCollectionLevel="Info"/>
+    <!--Optional:-->
+    <urn:Limits>
+      <!--Zero or more repetitions:-->
+      <urn:Limit Name="string" SoftLimit="3" HardLimit="3"/>
+    </urn:Limits>
+    <!--Optional:-->
+    <urn:Telemetry>
+      <!--1 or more repetitions:-->
+      <urn:TelemetryConsumer Type="anySimpleType" Assembly="anySimpleType"/>
+    </urn:Telemetry>
+    <!--Optional:-->
+    <urn:AdditionalAssemblyDirectories>
+      <!--Zero or more repetitions:-->
+      <urn:Directory>anyType</urn:Directory>
+    </urn:AdditionalAssemblyDirectories>
+  </urn:Defaults>
+  <!--Zero or more repetitions:-->
+  <urn:Override Node="string">
+    <!--Optional:-->
+    <urn:Startup Type="string"/>
+    <!--Optional:-->
+    <urn:Networking Address="string" Port="7" Subnet="5" PreferredFamily="InterNetwork"/>
+    <!--Optional:-->
+    <urn:ProxyingGateway Address="string" Port="7" Subnet="5" PreferredFamily="InterNetwork"/>
+    <!--Optional:-->
+    <urn:Scheduler MaxActiveThreads="5" DelayWarningThreshold="string" ActivationSchedulingQuantum="string" TurnWarningLengthThreshold="string"/>
+    <!--Optional:-->
+    <urn:LoadShedding Enabled="false" LoadLimit="201"/>
+    <!--Optional:-->
+    <urn:Tracing DefaultTraceLevel="Verbose" TraceToConsole="true" TraceToFile="string" MetricWritePeriod="string" LargeMessageWarningThreshold="3" PropagateActivityId="true" BulkMessageLimit="3">
+      <!--Zero or more repetitions:-->
+      <urn:LogConsumer>anyType</urn:LogConsumer>
+      <!--Zero or more repetitions:-->
+      <urn:TraceLevelOverride LogPrefix="string" TraceLevel="Warning"/>
+    </urn:Tracing>
+    <!--Optional:-->
+    <urn:Statistics MetricsTableWriteInterval="string" PerfCounterWriteInterval="string" LogWriteInterval="string" WriteLogStatisticsToTable="false" StatisticsCollectionLevel="Verbose2"/>
+    <!--Optional:-->
+    <urn:Limits>
+      <!--Zero or more repetitions:-->
+      <urn:Limit Name="string" SoftLimit="3" HardLimit="3"/>
+    </urn:Limits>
+    <!--Optional:-->
+    <urn:Telemetry>
+      <!--1 or more repetitions:-->
+      <urn:TelemetryConsumer Type="anySimpleType" Assembly="anySimpleType"/>
+    </urn:Telemetry>
+    <!--Optional:-->
+    <urn:AdditionalAssemblyDirectories>
+      <!--Zero or more repetitions:-->
+      <urn:Directory>anyType</urn:Directory>
+    </urn:AdditionalAssemblyDirectories>
+  </urn:Override>
+</urn:OrleansConfiguration>
